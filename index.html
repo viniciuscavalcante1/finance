@@ -11,16 +11,18 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💰</text></svg>">
 <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%230E0E0D' width='100' height='100' rx='20'/><text x='50' y='68' font-size='55' text-anchor='middle' fill='%234ADE80'>💰</text></svg>">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-database-compat.js"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --bg:#0E0E0D;--s1:#161615;--s2:#1D1D1C;--s3:#252524;
-  --b1:#2A2A28;--b2:#353533;
-  --t1:#E8E8E3;--t2:#8A8A82;--t3:#555550;
+  --b1:#2A2A28;--b2:#3A3A38;
+  --t1:#EEEEE9;--t2:#A0A098;--t3:#70706A;
   --g:#4ADE80;--gd:#142e1d;--r:#F87171;--rd:#2d1516;--o:#FBBF24;--od:#2d2410;
   --font:'DM Sans',sans-serif;--mono:'JetBrains Mono',monospace;--rad:8px;
 }
-html{font-size:15px}
+html{font-size:16px}
 body{font-family:var(--font);background:var(--bg);color:var(--t1);min-height:100dvh;-webkit-font-smoothing:antialiased}
 button{font-family:var(--font);cursor:pointer}
 input,select,textarea{font-family:var(--font)}
@@ -38,11 +40,11 @@ input,select,textarea{font-family:var(--font)}
 /* tabs */
 .tabs{display:flex;gap:2px;background:var(--s1);border:1px solid var(--b1);border-radius:var(--rad);padding:3px;margin-bottom:16px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .tabs::-webkit-scrollbar{display:none}
-.tab{flex:0 0 auto;padding:7px 10px;border:none;background:0;border-radius:6px;font-family:var(--mono);font-weight:600;font-size:.62rem;color:var(--t3);transition:all .12s;text-transform:uppercase;letter-spacing:.5px;white-space:nowrap;cursor:pointer}
+.tab{flex:0 0 auto;padding:7px 10px;border:none;background:0;border-radius:6px;font-family:var(--mono);font-weight:600;font-size:.68rem;color:var(--t2);transition:all .12s;text-transform:uppercase;letter-spacing:.5px;white-space:nowrap;cursor:pointer}
 .tab.on{background:var(--s2);color:var(--t1)}
 
 /* section label */
-.slbl{font-family:var(--mono);font-size:.62rem;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--t3);margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.slbl{font-family:var(--mono);font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--t2);margin-bottom:8px;display:flex;align-items:center;gap:6px}
 
 /* cards */
 .card{background:var(--s1);border:1px solid var(--b1);border-radius:var(--rad);padding:14px;margin-bottom:8px}
@@ -51,7 +53,7 @@ input,select,textarea{font-family:var(--font)}
 .stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin-bottom:12px}
 .stat-card{background:var(--s1);border:1px solid var(--b1);border-radius:var(--rad);padding:12px}
 .stat-val{font-family:var(--mono);font-size:1.05rem;font-weight:700}
-.stat-lbl{font-family:var(--mono);font-size:.52rem;color:var(--t3);margin-top:2px;text-transform:uppercase;letter-spacing:.5px}
+.stat-lbl{font-family:var(--mono);font-size:.6rem;color:var(--t3);margin-top:2px;text-transform:uppercase;letter-spacing:.5px}
 
 /* transaction item */
 .tx-item{display:flex;align-items:center;gap:10px;padding:11px 12px;background:var(--s1);border:1px solid var(--b1);border-radius:var(--rad);margin-bottom:4px;cursor:pointer;transition:all .12s}
@@ -59,7 +61,7 @@ input,select,textarea{font-family:var(--font)}
 .tx-icon{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0}
 .tx-info{flex:1;min-width:0}
 .tx-name{font-size:.82rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.tx-meta{font-family:var(--mono);font-size:.55rem;color:var(--t3);margin-top:2px;display:flex;gap:5px;flex-wrap:wrap;align-items:center}
+.tx-meta{font-family:var(--mono);font-size:.62rem;color:var(--t2);margin-top:2px;display:flex;gap:5px;flex-wrap:wrap;align-items:center}
 .tx-amount{font-family:var(--mono);font-size:.88rem;font-weight:700;white-space:nowrap}
 .tx-amount.neg{color:var(--r)}
 .tx-amount.pos{color:var(--g)}
@@ -130,7 +132,7 @@ input,select,textarea{font-family:var(--font)}
 @media(min-width:500px){.mo{border-radius:10px}}
 .mo h3{font-size:.92rem;font-weight:700;margin-bottom:16px}
 .fg{margin-bottom:12px}
-.fl{font-family:var(--mono);font-size:.56rem;text-transform:uppercase;letter-spacing:.5px;color:var(--t3);margin-bottom:5px;display:block}
+.fl{font-family:var(--mono);font-size:.64rem;text-transform:uppercase;letter-spacing:.5px;color:var(--t2);margin-bottom:5px;display:block}
 .fi{width:100%;padding:9px 11px;border-radius:var(--rad);border:1px solid var(--b1);background:var(--s2);color:var(--t1);font-size:.84rem;outline:0;transition:border-color .12s}
 .fi:focus{border-color:var(--g)}
 textarea.fi{resize:vertical;min-height:60px;line-height:1.4}
@@ -166,6 +168,35 @@ textarea.fi{resize:vertical;min-height:60px;line-height:1.4}
 <body>
 <div id="root"></div>
 <script>
+// ═══════════════════════════════════════════════════════════
+// FIREBASE
+// ═══════════════════════════════════════════════════════════
+const FB_CONFIG={apiKey:"AIzaSyBIL-pvTf4fvE-NuquiVXqkcedbXYssDL0",authDomain:"rotinavini.firebaseapp.com",databaseURL:"https://rotinavini-default-rtdb.firebaseio.com",projectId:"rotinavini",storageBucket:"rotinavini.firebasestorage.app",messagingSenderId:"926063710082",appId:"1:926063710082:web:892c51fef8d8c09c15099b"};
+let dbRef=null, fbOk=false;
+
+function initFB(){
+  if(typeof firebase==='undefined') return;
+  try{
+    firebase.initializeApp(FB_CONFIG);
+    dbRef=firebase.database().ref('financas');
+    fbOk=true;
+    dbRef.on('value', snap=>{
+      const d=snap.val();
+      if(d){
+        S.transactions=d.transactions||S.transactions;
+        S.categories=d.categories||S.categories;
+        S.establishments=d.establishments||S.establishments;
+        S.subscriptions=d.subscriptions||S.subscriptions;
+        S.investments=d.investments||S.investments;
+        S.investmentLogs=d.investmentLogs||S.investmentLogs;
+        S.budgets=d.budgets||S.budgets;
+        localStorage.setItem(LK, JSON.stringify(S));
+        R();
+      }
+    });
+  }catch(e){ console.error('Firebase:', e); }
+}
+
 // ═══════════════════════════════════════════════════════════
 // CONSTANTS
 // ═══════════════════════════════════════════════════════════
@@ -227,7 +258,13 @@ function load(){
   };
 }
 
-function save(){ localStorage.setItem(LK, JSON.stringify(S)); }
+function save(){
+  localStorage.setItem(LK, JSON.stringify(S));
+  if(fbOk && dbRef){
+    const clean=JSON.parse(JSON.stringify(S));
+    dbRef.set(clean).catch(console.error);
+  }
+}
 
 // ═══════════════════════════════════════════════════════════
 // HELPERS
@@ -1220,6 +1257,7 @@ function importData(e){
 // INIT
 // ═══════════════════════════════════════════════════════════
 R();
+initFB();
 </script>
 </body>
 </html>
