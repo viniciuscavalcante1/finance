@@ -17,12 +17,12 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --bg:#0E0E0D;--s1:#161615;--s2:#1D1D1C;--s3:#252524;
-  --b1:#2A2A28;--b2:#3A3A38;
-  --t1:#EEEEE9;--t2:#A0A098;--t3:#70706A;
+  --b1:#2E2E2C;--b2:#3E3E3C;
+  --t1:#F2F2ED;--t2:#B8B8B0;--t3:#888880;
   --g:#4ADE80;--gd:#142e1d;--r:#F87171;--rd:#2d1516;--o:#FBBF24;--od:#2d2410;
   --font:'DM Sans',sans-serif;--mono:'JetBrains Mono',monospace;--rad:8px;
 }
-html{font-size:16px}
+html{font-size:17px}
 body{font-family:var(--font);background:var(--bg);color:var(--t1);min-height:100dvh;-webkit-font-smoothing:antialiased}
 button{font-family:var(--font);cursor:pointer}
 input,select,textarea{font-family:var(--font)}
@@ -52,17 +52,17 @@ input,select,textarea{font-family:var(--font)}
 /* stats grid */
 .stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin-bottom:12px}
 .stat-card{background:var(--s1);border:1px solid var(--b1);border-radius:var(--rad);padding:12px}
-.stat-val{font-family:var(--mono);font-size:1.05rem;font-weight:700}
-.stat-lbl{font-family:var(--mono);font-size:.6rem;color:var(--t3);margin-top:2px;text-transform:uppercase;letter-spacing:.5px}
+.stat-val{font-family:var(--mono);font-size:1.1rem;font-weight:700}
+.stat-lbl{font-family:var(--mono);font-size:.65rem;color:var(--t2);margin-top:2px;text-transform:uppercase;letter-spacing:.5px}
 
 /* transaction item */
 .tx-item{display:flex;align-items:center;gap:10px;padding:11px 12px;background:var(--s1);border:1px solid var(--b1);border-radius:var(--rad);margin-bottom:4px;cursor:pointer;transition:all .12s}
 .tx-item:hover{border-color:var(--b2);background:var(--s2)}
 .tx-icon{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0}
 .tx-info{flex:1;min-width:0}
-.tx-name{font-size:.82rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.tx-meta{font-family:var(--mono);font-size:.62rem;color:var(--t2);margin-top:2px;display:flex;gap:5px;flex-wrap:wrap;align-items:center}
-.tx-amount{font-family:var(--mono);font-size:.88rem;font-weight:700;white-space:nowrap}
+.tx-name{font-size:.88rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tx-meta{font-family:var(--mono);font-size:.65rem;color:var(--t2);margin-top:2px;display:flex;gap:5px;flex-wrap:wrap;align-items:center}
+.tx-amount{font-family:var(--mono);font-size:.92rem;font-weight:700;white-space:nowrap}
 .tx-amount.neg{color:var(--r)}
 .tx-amount.pos{color:var(--g)}
 
@@ -81,7 +81,7 @@ input,select,textarea{font-family:var(--font)}
 .cat-row{display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--s1);border:1px solid var(--b1);border-radius:var(--rad);margin-bottom:4px}
 .cat-icon{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.88rem;flex-shrink:0}
 .cat-info{flex:1;min-width:0}
-.cat-name{font-size:.82rem;font-weight:600}
+.cat-name{font-size:.88rem;font-weight:600}
 .cat-meta{font-family:var(--mono);font-size:.55rem;color:var(--t3);margin-top:1px}
 .cat-amount{font-family:var(--mono);font-size:.8rem;font-weight:700;white-space:nowrap}
 
@@ -130,10 +130,10 @@ input,select,textarea{font-family:var(--font)}
 @keyframes su{from{transform:translateY(14px);opacity:0}to{transform:translateY(0);opacity:1}}
 .mo{background:var(--s1);border:1px solid var(--b1);border-radius:14px 14px 0 0;padding:22px 18px 30px;width:100%;max-width:480px;animation:su .12s;max-height:92dvh;overflow-y:auto}
 @media(min-width:500px){.mo{border-radius:10px}}
-.mo h3{font-size:.92rem;font-weight:700;margin-bottom:16px}
+.mo h3{font-size:1rem;font-weight:700;margin-bottom:16px}
 .fg{margin-bottom:12px}
 .fl{font-family:var(--mono);font-size:.64rem;text-transform:uppercase;letter-spacing:.5px;color:var(--t2);margin-bottom:5px;display:block}
-.fi{width:100%;padding:9px 11px;border-radius:var(--rad);border:1px solid var(--b1);background:var(--s2);color:var(--t1);font-size:.84rem;outline:0;transition:border-color .12s}
+.fi{width:100%;padding:10px 12px;border-radius:var(--rad);border:1px solid var(--b1);background:var(--s2);color:var(--t1);font-size:.9rem;outline:0;transition:border-color .12s}
 .fi:focus{border-color:var(--g)}
 textarea.fi{resize:vertical;min-height:60px;line-height:1.4}
 .fi-row{display:flex;gap:8px}
@@ -322,6 +322,7 @@ function renderTabs(){
     {id:'dash',label:'Visão Geral'},
     {id:'txs',label:'Lançamentos'},
     {id:'subs',label:'Assinaturas'},
+    {id:'actions',label:'Ações'},
     {id:'analysis',label:'Análises'},
     {id:'budget',label:'Orçamentos'},
     {id:'invest',label:'Investimentos'},
@@ -334,6 +335,7 @@ function renderView(){
   if(V==='dash') return renderDash();
   if(V==='txs') return renderTxs();
   if(V==='subs') return renderSubs();
+  if(V==='actions') return renderActions();
   if(V==='analysis') return renderAnalysis();
   if(V==='budget') return renderBudget();
   if(V==='invest') return renderInvest();
@@ -510,6 +512,57 @@ function renderSubItem(s){
   </div>`;
 }
 
+// ─── ACTIONS ────────────────────────────────────────────────
+function renderActions(){
+  const allTxActions = S.transactions.filter(t=>t.actionNeeded);
+  const allSubActions = S.subscriptions.filter(s=>s.actionNeeded);
+
+  const pending = [
+    ...allTxActions.filter(t=>!t.actionDone).map(t=>({type:'tx',id:t.id,title:t.description,action:t.actionNeeded,date:t.date,done:false})),
+    ...allSubActions.filter(s=>!s.actionDone).map(s=>({type:'sub',id:s.id,title:s.name,action:s.actionNeeded,date:'',done:false})),
+  ];
+  const done = [
+    ...allTxActions.filter(t=>t.actionDone).map(t=>({type:'tx',id:t.id,title:t.description,action:t.actionNeeded,date:t.date,done:true})),
+    ...allSubActions.filter(s=>s.actionDone).map(s=>({type:'sub',id:s.id,title:s.name,action:s.actionNeeded,date:'',done:true})),
+  ].sort((a,b)=>b.date.localeCompare(a.date));
+
+  return `
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+    <div style="font-family:var(--mono);font-size:.7rem;color:var(--t2)">${pending.length} pendente${pending.length!==1?'s':''} · ${done.length} concluída${done.length!==1?'s':''}</div>
+  </div>
+
+  <div class="slbl" style="color:var(--o)">⚡ Pendentes</div>
+  ${pending.length ? pending.map(a=>`
+    <div class="card" style="border-left:3px solid var(--o);margin-bottom:6px">
+      <div style="display:flex;align-items:flex-start;gap:10px">
+        <div style="flex:1;min-width:0">
+          <div style="font-size:.88rem;font-weight:600;margin-bottom:3px">${esc(a.title)}</div>
+          <div style="font-family:var(--mono);font-size:.7rem;color:var(--o);margin-bottom:6px">${esc(a.action)}</div>
+          ${a.date?`<div style="font-family:var(--mono);font-size:.62rem;color:var(--t3)">${a.date}</div>`:''}
+        </div>
+        <div style="display:flex;gap:6px;flex-shrink:0">
+          <button class="btn-s" style="font-size:.65rem;height:28px" onclick="${a.type==='tx'?`markActionDone('tx','${a.id}')`:`markActionDone('sub','${a.id}')`}">✓ Feito</button>
+          <button class="btn-s" style="font-size:.65rem;height:28px" onclick="${a.type==='tx'?`openModal('tx',getTx('${a.id}'))`:`openModal('sub',getSub('${a.id}'))`}">✎</button>
+        </div>
+      </div>
+    </div>`).join('') : `<div class="empty" style="padding:20px"><div class="empty-icon">✅</div>Nenhuma ação pendente!</div>`}
+
+  ${done.length ? `
+  <div class="slbl" style="margin-top:14px;color:var(--g)">✅ Histórico Concluídas</div>
+  ${done.map(a=>`
+    <div class="card" style="border-left:3px solid var(--gd);opacity:.7;margin-bottom:5px">
+      <div style="display:flex;align-items:flex-start;gap:10px">
+        <div style="flex:1;min-width:0">
+          <div style="font-size:.85rem;font-weight:600;margin-bottom:2px;text-decoration:line-through;color:var(--t2)">${esc(a.title)}</div>
+          <div style="font-family:var(--mono);font-size:.68rem;color:var(--t3)">${esc(a.action)}</div>
+        </div>
+        <button class="btn-s" style="font-size:.62rem;height:26px;flex-shrink:0" onclick="${a.type==='tx'?`markActionDone('tx','${a.id}')`:`markActionDone('sub','${a.id}')`}">↩</button>
+      </div>
+    </div>`).join('')}
+  ` : ''}
+  `;
+}
+
 // ─── ANALYSIS ───────────────────────────────────────────────
 function renderAnalysis(){
   const txs = monthTxs(currentMonth).filter(t=>t.type==='expense');
@@ -610,37 +663,53 @@ function renderAnalysis(){
 function renderBudget(){
   const budgets = S.budgets.filter(b=>b.month===currentMonth);
 
-  return `
-  ${renderMonthNav()}
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
-    <div class="slbl" style="margin:0">Orçamentos por Categoria</div>
-    <button class="btn-s btn-g" onclick="openModal('budget',null)">+ orçamento</button>
-  </div>
-  ${budgets.length ? budgets.map(b=>{
+  const catBudgets = budgets.filter(b=>b.type==='category');
+  const estBudgets = budgets.filter(b=>b.type==='establishment');
+
+  function budgetCard(b){
     const cat = b.type==='category' ? getCat(b.refId) : null;
     const est = b.type==='establishment' ? getEst(b.refId) : null;
-    const label = cat ? (cat.icon+' '+cat.name) : (est ? '🏪 '+est.name : '—');
-    const color = cat ? cat.color : 'var(--t2)';
+    const label = cat ? (cat.icon+' '+cat.name) : (est ? est.name : '—');
+    const color = cat ? cat.color : '#60A5FA';
     const txs = monthTxs(currentMonth).filter(t=>t.type==='expense' && (b.type==='category'?t.category===b.refId:t.establishment===b.refId));
     const spent = txs.reduce((s,t)=>s+(+t.amount||0),0);
     const pct = b.amount>0 ? Math.min(Math.round(spent/b.amount*100),100) : 0;
     const over = spent > b.amount;
     return `<div class="budget-row${over?' budget-over':''}">
       <div style="flex:1;min-width:0">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
-          <div style="font-size:.82rem;font-weight:600">${label}</div>
-          <div style="font-family:var(--mono);font-size:.68rem;color:${over?'var(--r)':'var(--t2)'}">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
+          <div style="font-size:.9rem;font-weight:600">${label}</div>
+          <div style="font-family:var(--mono);font-size:.7rem;color:${over?'var(--r)':'var(--t2)'}">
             ${fmt(spent)} / ${fmt(b.amount)}
           </div>
         </div>
-        <div class="prog-track">
+        <div class="prog-track" style="height:5px">
           <div class="prog-fill" style="width:${pct}%;background:${over?'var(--r)':color}"></div>
         </div>
-        <div style="font-family:var(--mono);font-size:.5rem;color:var(--t3);margin-top:3px">${over?`R$ ${fmt(spent-b.amount).replace('R$ ','')} acima`:`${100-pct}% restante`}</div>
+        <div style="font-family:var(--mono);font-size:.58rem;color:${over?'var(--r)':'var(--t3)'};margin-top:4px">${over?`⚠ ${fmt(spent-b.amount)} acima do limite`:`${100-pct}% restante · ${fmt(b.amount-spent)} disponível`}</div>
       </div>
-      <button class="btn-s" style="margin-left:8px;flex-shrink:0" onclick="openModal('budget',getBudget('${b.id}'))">✎</button>
+      <button class="btn-s" style="margin-left:10px;flex-shrink:0" onclick="openModal('budget',getBudget('${b.id}'))">✎</button>
     </div>`;
-  }).join('') : `<div class="empty"><div class="empty-icon">🎯</div>Nenhum orçamento para ${monthName(currentMonth)}</div>`}
+  }
+
+  return `
+  ${renderMonthNav()}
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+    <div class="slbl" style="margin:0">Orçamentos</div>
+    <button class="btn-s btn-g" onclick="openModal('budget',null)">+ orçamento</button>
+  </div>
+
+  ${budgets.length===0 ? `<div class="empty"><div class="empty-icon">🎯</div>Nenhum orçamento para ${monthName(currentMonth)}<div style="margin-top:8px;font-size:.75rem">Defina limites por categoria ou estabelecimento</div></div>` : ''}
+
+  ${catBudgets.length ? `
+  <div class="slbl">Por Categoria</div>
+  ${catBudgets.map(b=>budgetCard(b)).join('')}
+  ` : ''}
+
+  ${estBudgets.length ? `
+  <div class="slbl" style="margin-top:12px">Por Estabelecimento</div>
+  ${estBudgets.map(b=>budgetCard(b)).join('')}
+  ` : ''}
   `;
 }
 
@@ -691,36 +760,71 @@ function renderInvest(){
 }
 
 // ─── CONFIG ─────────────────────────────────────────────────
+let configTab='cats';
+function setConfigTab(t){ configTab=t; R(); }
+
 function renderConfig(){
   return `
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
-    <div class="slbl" style="margin:0">Categorias</div>
-    <button class="btn-s btn-g" onclick="openModal('cat',null)">+ categoria</button>
+  <div class="type-tog" style="margin-bottom:14px">
+    <button class="type-btn${configTab==='cats'?' on':''}" onclick="setConfigTab('cats')">🏷 Categorias</button>
+    <button class="type-btn${configTab==='ests'?' on':''}" onclick="setConfigTab('ests')">🏪 Estabelecimentos</button>
+    <button class="type-btn${configTab==='data'?' on':''}" onclick="setConfigTab('data')">💾 Dados</button>
+  </div>
+
+  ${configTab==='cats' ? `
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+    <div style="font-family:var(--mono);font-size:.65rem;color:var(--t2)">${S.categories.length} categorias</div>
+    <button class="btn-s btn-g" onclick="openModal('cat',null)">+ nova categoria</button>
   </div>
   ${S.categories.map(c=>`
-    <div class="cat-row" style="cursor:pointer" onclick="openModal('cat',getCat('${c.id}'))">
+    <div class="cat-row" style="cursor:pointer" onclick="openModal('cat',S.categories.find(x=>x.id==='${c.id}'))">
       <div class="cat-icon" style="background:${c.color}22">${c.icon}</div>
-      <div class="cat-info"><div class="cat-name">${esc(c.name)}</div></div>
-      <div style="color:var(--t3);font-size:.8rem">›</div>
+      <div class="cat-info">
+        <div class="cat-name">${esc(c.name)}</div>
+        <div class="cat-meta" style="display:flex;align-items:center;gap:6px">
+          <div style="width:10px;height:10px;border-radius:50%;background:${c.color}"></div>
+          <span>${c.color}</span>
+        </div>
+      </div>
+      <div style="color:var(--t2);font-size:.9rem">›</div>
     </div>`).join('')}
+  ` : ''}
 
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-top:14px;margin-bottom:8px">
-    <div class="slbl" style="margin:0">Estabelecimentos</div>
-    <button class="btn-s btn-g" onclick="openModal('est',null)">+ local</button>
+  ${configTab==='ests' ? `
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+    <div style="font-family:var(--mono);font-size:.65rem;color:var(--t2)">${S.establishments.length} estabelecimento${S.establishments.length!==1?'s':''}</div>
+    <button class="btn-s btn-g" onclick="openModal('est',null)">+ novo local</button>
   </div>
   ${S.establishments.length ? S.establishments.map(e=>`
-    <div class="cat-row" style="cursor:pointer" onclick="openModal('est',getEst('${e.id}'))">
+    <div class="cat-row" style="cursor:pointer" onclick="openModal('est',S.establishments.find(x=>x.id==='${e.id}'))">
       <div class="cat-icon" style="background:var(--s3)">🏪</div>
-      <div class="cat-info"><div class="cat-name">${esc(e.name)}</div></div>
-      <div style="color:var(--t3);font-size:.8rem">›</div>
-    </div>`).join('') : `<div class="empty" style="padding:20px"><div class="empty-icon">🏪</div>Nenhum estabelecimento</div>`}
+      <div class="cat-info">
+        <div class="cat-name">${esc(e.name)}</div>
+      </div>
+      <div style="color:var(--t2);font-size:.9rem">›</div>
+    </div>`).join('') : `
+    <div class="empty"><div class="empty-icon">🏪</div>
+    <div>Nenhum estabelecimento cadastrado</div>
+    <div style="margin-top:8px;font-size:.75rem">Ex: Mercado, Farmácia, Carrinho do Escritório</div>
+    </div>`}
+  ` : ''}
 
-  <div style="margin-top:20px">
-    <div class="slbl">Dados</div>
-    <button class="btn-s" onclick="exportData()" style="width:100%;justify-content:center;margin-bottom:6px">⬇ Exportar (JSON)</button>
-    <button class="btn-s" onclick="document.getElementById('imp').click()" style="width:100%;justify-content:center">⬆ Importar (JSON)</button>
-    <input type="file" id="imp" accept=".json" style="display:none" onchange="importData(event)">
+  ${configTab==='data' ? `
+  <div class="card" style="margin-bottom:10px">
+    <div style="font-size:.88rem;font-weight:600;margin-bottom:4px">Estatísticas</div>
+    <div style="font-family:var(--mono);font-size:.68rem;color:var(--t2);display:flex;flex-direction:column;gap:3px">
+      <div>${S.transactions.length} transações registradas</div>
+      <div>${S.subscriptions.length} assinaturas</div>
+      <div>${S.investments.length} metas de investimento</div>
+      <div>${S.investmentLogs.length} aportes registrados</div>
+      <div>${S.budgets.length} orçamentos</div>
+    </div>
   </div>
+  <button class="btn-s" onclick="exportData()" style="width:100%;justify-content:center;margin-bottom:6px;height:40px">⬇ Exportar dados (JSON)</button>
+  <button class="btn-s" onclick="document.getElementById('imp').click()" style="width:100%;justify-content:center;height:40px">⬆ Importar dados (JSON)</button>
+  <input type="file" id="imp" accept=".json" style="display:none" onchange="importData(event)">
+  <div style="font-family:var(--mono);font-size:.6rem;color:var(--t3);margin-top:10px;text-align:center">Dados sincronizados via Firebase</div>
+  ` : ''}
   `;
 }
 
@@ -1195,6 +1299,17 @@ function deleteBudget(id){
   if(!confirm('Excluir este orçamento?')) return;
   S.budgets=S.budgets.filter(b=>b.id!==id);
   save(); modal=null; R();
+}
+
+function markActionDone(type, id){
+  if(type==='tx'){
+    const t=S.transactions.find(t=>t.id===id);
+    if(t) t.actionDone=!t.actionDone;
+  } else {
+    const s=S.subscriptions.find(s=>s.id===id);
+    if(s) s.actionDone=!s.actionDone;
+  }
+  save(); R();
 }
 
 function saveInvest(id){
